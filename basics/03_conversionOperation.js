@@ -80,3 +80,32 @@ console.log(gameCounter);
 
 //link to study
 //https://262.ecma-international.org/#sec-abstract-operations
+
+
+/*                      Memory                           */
+
+// stack // heap
+
+// we are using premitive data types so stack memory will be used via pass by value concept
+let myname="anshul"
+let yourname= myname
+console.log(yourname)
+yourname="ram"
+console.log(yourname) // pass by value
+console.log(myname) // no changes in original one
+
+// we are using non-premitive so here heap memory will be used via pass by reference
+
+let users={
+    email:"asm@gmail.com",
+    number:"+91257895",
+}
+
+let anotheruser=users;
+console.log(users)
+anotheruser.email="asm234@gmail.com"
+
+console.log(anotheruser)
+console.log(users) // changes incoperated in both objects i.e known as pass by reference
+
+
