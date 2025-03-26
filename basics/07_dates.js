@@ -28,3 +28,10 @@ console.log(newdate.getDay()) // day 1-mon 2-tue ....
 newdate.toLocaleString('default',{
     weekday: "long"
 }) // can customize format of localstring.
+
+console.log(newdate.toLocaleString('default',{
+    day:"numeric",
+    month:"long",
+    year:"2-digit",
+    timeZoneName:"long"
+}))
