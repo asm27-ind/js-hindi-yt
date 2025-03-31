@@ -29,3 +29,57 @@ Search engines help users find web pages on the internet. They have evolved sign
 8. **2011 – Google Panda Update:** Improved search quality by penalizing low-quality websites.  
 9. **2015 – Mobile-first Indexing:** Google started prioritizing mobile-friendly sites.  
 10. **2023-Present – AI Search & Generative AI:** Search engines integrate AI (like **Google Gemini, Microsoft Copilot**) to provide more interactive search experiences.  
+
+### **What is an API?**
+API (Application Programming Interface) is a set of rules that allows one software application to interact with another. It defines how requests and responses should be made and processed.
+
+In simple terms, an API acts as a **waiter** in a restaurant:
+- You (the client) give your order (request) to the waiter (API).
+- The waiter takes it to the kitchen (server).
+- The kitchen prepares the food (processes the request).
+- The waiter brings the food back to you (response).
+
+---
+
+### **Formats of API Responses**
+APIs typically return data in **structured formats**. The most common ones are:
+1. **JSON (JavaScript Object Notation) – Most widely used**
+2. **XML (Extensible Markup Language) – Used in older systems**
+3. **Plain Text or HTML – Sometimes used in web APIs**
+
+---
+
+### **Real-Life Example of an API**
+#### **1. Weather API**
+- You open a weather app and check today's temperature.
+- The app sends a request to a weather API like OpenWeather.
+- The API responds with the temperature in JSON format.
+- The app displays the temperature to you.
+
+#### **2. Online Payments (Paytm, Google Pay, UPI)**
+- You make a payment using Google Pay.
+- Google Pay’s API communicates with your bank’s API.
+- Your bank processes the payment and returns a success or failure message.
+
+---
+
+### **What is JSON?**
+JSON (JavaScript Object Notation) is a lightweight data format used for APIs. It is easy for humans to read and write, and easy for machines to parse.
+
+#### **Example JSON Response from a Weather API**
+```json
+{
+  "city": "Kolkata",
+  "temperature": 32,
+  "humidity": 65,
+  "description": "Sunny"
+}
+```
+
+---
+
+### **Relationship Between APIs and JSON**
+- APIs **send and receive data** in JSON format because it is lightweight and widely supported.
+- JSON allows **structured** and **organized** data transfer.
+- It is **language-independent**, meaning APIs in Python, JavaScript, or C++ can all use JSON.
+
