@@ -61,3 +61,9 @@ const users = [
 
 // users[1].email
 console.log(tinderuser)
+
+console.log(Object.keys(tinderuser)) // Object.keys(obj_name) =>it return array of all keys // [ 'id', 'name', 'isLoggedIn' ]
+console.log(Object.values(tinderuser)) // [ '123abc', 'Sam', false ]
+console.log(Object.entries(tinderuser)) // return array of [key,value] // [ [ 'id', '123abc' ], [ 'name', 'Sam' ], [ 'isLoggedIn', false ] ]
+
+console.log(tinderuser.hasOwnProperty('isLoggedIn')) // to check whether a specific key exist or not // true;
