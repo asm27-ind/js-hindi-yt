@@ -30,7 +30,7 @@ Search engines help users find web pages on the internet. They have evolved sign
 9. **2015 – Mobile-first Indexing:** Google started prioritizing mobile-friendly sites.  
 10. **2023-Present – AI Search & Generative AI:** Search engines integrate AI (like **Google Gemini, Microsoft Copilot**) to provide more interactive search experiences.  
 
-#### **What is an API?**
+### **What is an API?**
 API (Application Programming Interface) is a set of rules that allows one software application to interact with another. It defines how requests and responses should be made and processed.
 
 In simple terms, an API acts as a **waiter** in a restaurant:
