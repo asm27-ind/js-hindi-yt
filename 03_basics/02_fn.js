@@ -23,7 +23,7 @@ function one(){
     }
     // console.log(website);
 
-     two()
+    //  two()
 
 }
 
@@ -44,15 +44,15 @@ if (true) {
 // ++++++++++++++++++ interesting ++++++++++++++++++
 
 
-console.log(addone(5))
+// console.log(addone(5)) // no error can be called before defination
 
-function addone(num){
-    return num + 1
-}
+// function addone(num){
+//     return num + 1
+// }
 
 
 
-addTwo(5)
-const addTwo = function(num){
+// console.log(addTwo(5)) // Error due to fn is holded by a variable.
+const addTwo = function(num){ // IN js variables are vary powerful they can hold fn itself also
     return num + 2
 }
