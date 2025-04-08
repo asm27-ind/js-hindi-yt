@@ -83,3 +83,5 @@ JSON (JavaScript Object Notation) is a lightweight data format used for APIs. It
 - JSON allows **structured** and **organized** data transfer.
 - It is **language-independent**, meaning APIs in Python, JavaScript, or C++ can all use JSON.
 
+# JavaScript Closures
+In JavaScript, a closure is created when a function is defined within another function, allowing the inner function to access variables and parameters of the outer function even after the outer function has finished executing. This is because the inner function maintains a reference to its lexical environment, which includes all the variables in scope at the time of its creation
