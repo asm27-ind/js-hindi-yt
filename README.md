@@ -86,38 +86,49 @@ JSON (JavaScript Object Notation) is a lightweight data format used for APIs. It
 # JavaScript Closures
 In JavaScript, a closure is created when a function is defined within another function, allowing the inner function to access variables and parameters of the outer function even after the outer function has finished executing. This is because the inner function maintains a reference to its lexical environment, which includes all the variables in scope at the time of its creation
 
-🚀 JavaScript Execution Model – Complete Interview Guide
-🧠 1. What is an Execution Context?
-An Execution Context (EC) is the environment where JavaScript code is evaluated and executed.
+Great! Since you're preparing for interviews, I'll give you an **interview-focused deep dive** into JavaScript's execution model—covering everything you need to know to **explain confidently in interviews**, with real examples, edge cases, and insights.
 
-Think of it as a container with:
+---
 
-Variable Environment – stores variables, functions, parameters.
+# 🚀 JavaScript Execution Model 
 
-Lexical Environment – info about the surroundings of the code.
+---
 
-this Binding – depends on how the function is called.
+## 🧠 1. What is an **Execution Context**?
 
-✅ Types of Execution Contexts:
-Type	Description
-Global Execution Context	Created when the JS file starts executing. Only once.
-Function Execution Context	Created every time a function is invoked.
-Eval Execution Context	Created when code is executed inside eval() (rarely used)
-🧾 2. Two Phases of Code Execution in JS
-Each Execution Context goes through two phases:
+An **Execution Context (EC)** is the environment where JavaScript code is evaluated and executed.  
 
-🔹 1. Memory Creation Phase (a.k.a. Hoisting Phase)
-Memory is allocated for variables and functions.
+Think of it as a **container** with:
+- **Variable Environment** – stores variables, functions, parameters.
+- **Lexical Environment** – info about the surroundings of the code.
+- **`this` Binding** – depends on how the function is called.
 
-Variable declarations (var) are hoisted with undefined.
+---
 
-Function declarations are hoisted with their full definition.
+### ✅ Types of Execution Contexts:
+
+| Type                     | Description                                                |
+|--------------------------|------------------------------------------------------------|
+| Global Execution Context | Created when the JS file starts executing. Only once.      |
+| Function Execution Context | Created every time a function is invoked.                |
+| Eval Execution Context   | Created when code is executed inside `eval()` (rarely used) |
+
+---
+
+## 🧾 2. Two Phases of Code Execution in JS
+
+Each Execution Context goes through **two phases**:
+
+---
+
+### 🔹 **1. Memory Creation Phase (a.k.a. Hoisting Phase)**
+
+- Memory is allocated for **variables and functions**.
+- **Variable declarations** (`var`) are hoisted with `undefined`.
+- **Function declarations** are hoisted **with their full definition**.
 
 👉 Example:
-
-js
-Copy
-Edit
+```js
 console.log(x); // undefined
 console.log(greet()); // Hello
 
@@ -125,41 +136,49 @@ var x = 10;
 function greet() {
   return "Hello";
 }
-Under the hood (Memory Phase):
+```
 
-js
-Copy
-Edit
+**Under the hood (Memory Phase):**
+```js
 x → undefined
 greet → function() { return "Hello"; }
-🔹 2. Execution Phase
+```
+
+---
+
+### 🔹 **2. Execution Phase**
+
 Now JS executes the code line-by-line:
+- Assigns actual values to variables
+- Invokes functions
 
-Assigns actual values to variables
+So `x = 10` is updated, and `greet()` is executed.
 
-Invokes functions
+---
 
-So x = 10 is updated, and greet() is executed.
+## 🚨 Interview Tip: Hoisting Differences
 
-🚨 Interview Tip: Hoisting Differences
-Declaration Type	Hoisted?	Initialized?	Temporal Dead Zone?
-var	Yes	undefined	No
-let/const	Yes	❌ (Not initialized)	✅ Yes
-Example:
-js
-Copy
-Edit
+| Declaration Type | Hoisted? | Initialized? | Temporal Dead Zone? |
+|------------------|----------|--------------|----------------------|
+| `var`            | Yes      | `undefined`  | No                   |
+| `let`/`const`    | Yes      | ❌ (Not initialized) | ✅ Yes        |
+
+### Example:
+```js
 console.log(a); // undefined
 console.log(b); // ReferenceError
 var a = 5;
 let b = 10;
-🔁 3. Call Stack – The Execution Tracker
-JS uses a Call Stack (LIFO – Last In, First Out) to manage execution contexts.
+```
 
-Example:
-js
-Copy
-Edit
+---
+
+## 🔁 3. Call Stack – The Execution Tracker
+
+JS uses a **Call Stack** (LIFO – Last In, First Out) to manage execution contexts.
+
+### Example:
+```js
 function one() {
   console.log("One");
   two();
@@ -170,42 +189,45 @@ function two() {
 }
 
 one();
-Call Stack Flow:
-vbnet
-Copy
-Edit
+```
+
+### Call Stack Flow:
+```
 PUSH: Global()
 PUSH: one()
 PUSH: two()
 POP: two()
 POP: one()
 POP: Global()
-Each function call creates a new Function Execution Context that gets pushed to the stack, and removed once done.
+```
 
-🔍 4. Components of Execution Context
+Each function call creates a new **Function Execution Context** that gets **pushed to the stack**, and removed once done.
+
+---
+
+## 🔍 4. Components of Execution Context
+
 Each EC has:
 
-✅ a) Variable Environment
-Stores function arguments, var declarations, and function declarations.
+### ✅ a) **Variable Environment**
+- Stores function arguments, `var` declarations, and function declarations.
 
-✅ b) Lexical Environment
-Reference to the parent EC (scope chain).
+### ✅ b) **Lexical Environment**
+- Reference to the parent EC (scope chain).
 
-✅ c) this Binding
-Global EC → this refers to global object (window in browser).
+### ✅ c) **`this` Binding**
+- Global EC → `this` refers to global object (window in browser).
+- Inside functions → depends on how function is called (can be `undefined`, global object, or custom object).
 
-Inside functions → depends on how function is called (can be undefined, global object, or custom object).
+---
 
-📌 5. Execution Context vs Scope Chain vs Lexical Scope
-Scope Chain – Chain of references to parent environments for resolving variables.
+## 📌 5. Execution Context vs Scope Chain vs Lexical Scope
 
-Lexical Scope – Based on where functions are written (not called).
+- **Scope Chain** – Chain of references to parent environments for resolving variables.
+- **Lexical Scope** – Based on where functions are written (not called).
 
 👉 Example:
-
-js
-Copy
-Edit
+```js
 function outer() {
   let a = 10;
   function inner() {
@@ -214,12 +236,15 @@ function outer() {
   inner();
 }
 outer();
-📚 6. Bonus: Arrow Functions and this
-Arrow functions don’t have their own this. They use this from the surrounding lexical context.
+```
 
-js
-Copy
-Edit
+---
+
+## 📚 6. Bonus: Arrow Functions and `this`
+
+Arrow functions **don’t have their own `this`**. They use `this` from the surrounding lexical context.
+
+```js
 const obj = {
   name: "John",
   sayHi: () => {
@@ -228,36 +253,37 @@ const obj = {
 };
 
 obj.sayHi(); // ⚠️ Not "John"
-Use a normal function if you need dynamic this.
+```
 
-💬 Common Interview Questions
-What is hoisting in JavaScript?
+Use a normal function if you need dynamic `this`.
 
-Explain how the call stack works.
+---
 
-What are the phases of execution in JS?
+## 💬 Common Interview Questions
 
-Difference between execution context and lexical environment?
+1. **What is hoisting in JavaScript?**
+2. **Explain how the call stack works.**
+3. **What are the phases of execution in JS?**
+4. **Difference between execution context and lexical environment?**
+5. **Why do `let` and `const` throw ReferenceError before initialization?**
+6. **What is the scope chain and how does it work with closures?**
+7. **How does JavaScript handle function calls internally?**
 
-Why do let and const throw ReferenceError before initialization?
+---
 
-What is the scope chain and how does it work with closures?
+## 🧾 Summary Cheat Sheet
 
-How does JavaScript handle function calls internally?
-
-🧾 Summary Cheat Sheet
-Concept	Description
-Execution Context	Environment to run code
-Global EC	Default context for any JS file
-Function EC	Created when a function is invoked
-Memory Phase	Variables/functions are hoisted
-Execution Phase	Code is run line-by-line
-Call Stack	Manages ECs (LIFO)
-var vs let/const	var hoisted + initialized, let/const hoisted only
-this in functions	Depends on invocation (use arrow functions cautiously)
-Scope Chain	Used for variable resolution through nested scopes
-
-Sure! Here's the entire content reformatted **for clean copy-pasting into a GitHub repo file** (like a `README.md`). It uses Markdown styling for clarity and structure.
+| Concept                 | Description |
+|-------------------------|-------------|
+| Execution Context       | Environment to run code |
+| Global EC               | Default context for any JS file |
+| Function EC             | Created when a function is invoked |
+| Memory Phase            | Variables/functions are hoisted |
+| Execution Phase         | Code is run line-by-line |
+| Call Stack              | Manages ECs (LIFO) |
+| `var` vs `let/const`    | `var` hoisted + initialized, `let/const` hoisted only |
+| `this` in functions     | Depends on invocation (use arrow functions cautiously) |
+| Scope Chain             | Used for variable resolution through nested scopes |
 
 ---
 
