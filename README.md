@@ -257,66 +257,92 @@ var vs let/const	var hoisted + initialized, let/const hoisted only
 this in functions	Depends on invocation (use arrow functions cautiously)
 Scope Chain	Used for variable resolution through nested scopes
 
-📋 Top JavaScript Interview Questions & Answers (with Examples)
-1. What is Hoisting in JavaScript?
-Answer:
-Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope (script or function).
+Sure! Here's the entire content reformatted **for clean copy-pasting into a GitHub repo file** (like a `README.md`). It uses Markdown styling for clarity and structure.
 
-var is hoisted with undefined.
+---
 
-function declarations are hoisted with their entire function body.
+```markdown
+# 📘 JavaScript Interview Questions & Answers
 
-let and const are hoisted but not initialized (Temporal Dead Zone).
+A comprehensive list of frequently asked JavaScript interview questions with clear answers and examples.
 
-Example:
+---
 
-js
-Copy
-Edit
+## 📌 1. What is Hoisting in JavaScript?
+
+**Answer:**  
+Hoisting is JavaScript’s behavior of moving declarations to the top of the current scope.
+
+- `var` is hoisted and initialized with `undefined`.
+- `function` declarations are hoisted completely.
+- `let` and `const` are hoisted but not initialized (TDZ – Temporal Dead Zone).
+
+```js
 console.log(a); // undefined
-var a = 5;
+var a = 10;
 
 console.log(b); // ReferenceError
-let b = 10;
-2. What is the difference between let, const, and var?
-Feature	var	let	const
-Scope	Function	Block	Block
-Hoisting	Yes, undefined	Yes, but TDZ	Yes, but TDZ
-Reassignable	Yes	Yes	❌
-Redeclarable	Yes	❌	❌
-3. What is an Execution Context?
-Answer:
-An Execution Context is the environment where JavaScript code runs.
+let b = 20;
+```
 
-Types:
+---
 
-Global Execution Context (GEC)
+## 📌 2. What is the difference between `let`, `const`, and `var`?
 
-Function Execution Context (FEC)
+| Feature       | `var`         | `let`         | `const`       |
+|---------------|---------------|---------------|---------------|
+| Scope         | Function       | Block         | Block         |
+| Hoisting      | Yes            | Yes (TDZ)     | Yes (TDZ)     |
+| Reassignable  | ✅             | ✅             | ❌             |
+| Redeclarable  | ✅             | ❌             | ❌             |
 
-Eval Execution Context (rare)
+---
 
-Each EC has:
+## 📌 3. What is an Execution Context?
 
-Variable Environment
+**Answer:**  
+An execution context is the environment where JavaScript code is executed.
 
-Lexical Environment
+**Types:**
+- Global Execution Context
+- Function Execution Context
+- Eval Execution Context
 
-this binding
+Each has:
+- Variable Environment
+- Lexical Environment
+- `this` binding
 
-4. What is the Call Stack?
-Answer:
-The Call Stack is a stack data structure that keeps track of function calls. When a function is invoked, its context is pushed to the stack; once it finishes, it’s popped off.
+---
 
-5. What are Closures?
-Answer:
-A closure is a function that remembers its outer scope, even after the outer function has finished executing.
+## 📌 4. What is the Call Stack?
 
-Example:
+**Answer:**  
+The call stack is a stack structure (LIFO) that keeps track of function calls.
 
-js
-Copy
-Edit
+```js
+function a() {
+  b();
+}
+function b() {
+  console.log('Hello');
+}
+a();
+```
+
+Call Stack:
+```
+Global -> a() -> b() -> pop -> pop
+```
+
+---
+
+## 📌 5. What are Closures?
+
+**Answer:**  
+A closure is a function that retains access to its outer scope, even after the outer function has finished.
+
+```js
 function outer() {
   let count = 0;
   return function inner() {
@@ -324,133 +350,168 @@ function outer() {
     console.log(count);
   };
 }
-
 const counter = outer();
 counter(); // 1
 counter(); // 2
-6. Difference between == and === in JavaScript?
-Answer:
+```
 
-== checks for value equality with type coercion
+---
 
-=== checks for strict equality (value + type)
+## 📌 6. What is the difference between `==` and `===`?
 
-js
-Copy
-Edit
-'5' == 5   // true
-'5' === 5  // false
-7. What is the difference between null and undefined?
-Feature	undefined	null
-Type	undefined	object
-Meaning	Declared but not assigned	Intentionally empty
-8. What is the difference between function declaration and function expression?
-Function Declaration:
+- `==` → loose equality (allows type coercion)
+- `===` → strict equality (no coercion)
 
-js
-Copy
-Edit
+```js
+'5' == 5    // true
+'5' === 5   // false
+```
+
+---
+
+## 📌 7. What is the difference between `null` and `undefined`?
+
+|               | `undefined`          | `null`                     |
+|---------------|----------------------|-----------------------------|
+| Type          | undefined             | object                     |
+| Meaning       | Declared but not assigned | Explicitly empty       |
+
+---
+
+## 📌 8. Function Declaration vs Function Expression
+
+**Function Declaration:**
+```js
 function greet() {
-  return "Hello";
+  return "Hi";
 }
+```
+
 ✅ Hoisted
 
-Function Expression:
-
-js
-Copy
-Edit
+**Function Expression:**
+```js
 const greet = function() {
-  return "Hello";
-}
+  return "Hi";
+};
+```
+
 ❌ Not hoisted
 
-9. What is an Immediately Invoked Function Expression (IIFE)?
-Answer:
-An IIFE is a function that runs immediately after it’s defined.
+---
 
-Example:
+## 📌 9. What is an IIFE (Immediately Invoked Function Expression)?
 
-js
-Copy
-Edit
-(function () {
-  console.log("IIFE runs!");
+**Answer:**  
+A function that runs immediately after it is defined.
+
+```js
+(function() {
+  console.log("IIFE running");
 })();
-10. What is the event loop in JavaScript?
-Answer:
-The event loop is what allows JavaScript to be non-blocking, even though it is single-threaded. It handles asynchronous tasks via:
+```
 
-Call Stack
+---
 
-Callback Queue
+## 📌 10. What is the Event Loop?
 
-Web APIs
+**Answer:**  
+The event loop allows JavaScript to perform non-blocking operations using:
 
-Example:
+- Call Stack
+- Web APIs
+- Callback Queue
 
-js
-Copy
-Edit
+```js
 console.log("Start");
-setTimeout(() => console.log("Async"), 0);
+setTimeout(() => console.log("Timeout"), 0);
 console.log("End");
-Output:
+```
 
-sql
-Copy
-Edit
+Output:
+```
 Start
 End
-Async
-11. What is a Promise in JavaScript?
-Answer:
-A Promise represents the eventual completion or failure of an asynchronous operation.
+Timeout
+```
 
-js
-Copy
-Edit
-let p = new Promise((resolve, reject) => {
-  resolve("Success");
+---
+
+## 📌 11. What is a Promise?
+
+**Answer:**  
+A Promise represents a value that may be available now, or later, or never.
+
+```js
+const p = new Promise((resolve, reject) => {
+  resolve("Success!");
 });
+p.then(data => console.log(data));
+```
 
-p.then((msg) => console.log(msg)); // Success
-12. What are arrow functions and how are they different from normal functions?
-Answer: Arrow functions:
+---
 
-Are shorter
+## 📌 12. What are Arrow Functions?
 
-Do not have their own this, arguments, or super
+**Answer:**  
+Arrow functions:
+- Are shorter in syntax
+- Do **not** have their own `this`, `arguments`, or `super`
+- Cannot be used as constructors
 
-Cannot be used as constructors
+```js
+const sum = (a, b) => a + b;
+```
 
-js
-Copy
-Edit
-const add = (a, b) => a + b;
-13. What is the difference between synchronous and asynchronous code?
-Synchronous: Tasks are executed one after another (blocking).
+---
 
-Asynchronous: Tasks can be paused and resumed, enabling non-blocking behavior.
+## 📌 13. Synchronous vs Asynchronous Code
 
-14. What is the Temporal Dead Zone (TDZ)?
-Answer:
-The time between a variable being hoisted and its declaration. Accessing the variable in this zone throws a ReferenceError.
+- **Synchronous**: Code executes line-by-line.
+- **Asynchronous**: Allows non-blocking code execution.
 
-js
-Copy
-Edit
-console.log(a); // ReferenceError
-let a = 5;
-15. What are higher-order functions?
-Answer:
+```js
+console.log("1");
+setTimeout(() => console.log("2"), 0);
+console.log("3");
+// Output: 1, 3, 2
+```
+
+---
+
+## 📌 14. What is the Temporal Dead Zone (TDZ)?
+
+**Answer:**  
+The phase between hoisting and declaration where `let` and `const` variables can't be accessed.
+
+```js
+console.log(x); // ReferenceError
+let x = 5;
+```
+
+---
+
+## 📌 15. What are Higher-Order Functions?
+
+**Answer:**  
 Functions that take other functions as arguments or return a function.
 
-js
-Copy
-Edit
+```js
 function greet(fn) {
   fn();
 }
-
 greet(() => console.log("Hello"));
+```
+
+---
+
+## ✅ Summary Cheat Sheet
+
+- **Hoisting**: Variables/functions moved to top
+- **Execution Context**: Env in which code runs
+- **Call Stack**: Stack to manage function calls
+- **Closures**: Inner function remembers outer variables
+- **Promises**: Handle async operations
+- **Arrow Functions**: Shorter syntax, lexical `this`
+- **TDZ**: Area where `let`/`const` not initialized
+- **IIFE**: Function that executes immediately
