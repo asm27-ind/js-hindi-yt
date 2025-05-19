@@ -541,3 +541,6 @@ greet(() => console.log("Hello"));
 - **Arrow Functions**: Shorter syntax, lexical `this`
 - **TDZ**: Area where `let`/`const` not initialized
 - **IIFE**: Function that executes immediately
+
+# DOM
+## window-> document->html
