@@ -544,3 +544,8 @@ greet(() => console.log("Hello"));
 
 # DOM
 ## window-> document->html
+ ## html->1) head 2)body.
+ head-> 1)title 2)meta ...... title-> text node ...... meta -> attribute
+ body -> div -> div has attribute.
+ div-> h1 and p as child and h1 has attribute and text node in p we have only text node.
+ 
